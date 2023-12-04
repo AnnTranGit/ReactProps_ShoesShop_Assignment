@@ -1,21 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class ProductItem extends Component {
   render() {
-    const {prod} = this.props
+    const { item,setStateModal } = this.props;
     return (
-        <div className='card'>
-        <img src={prod.image} alt="..."/>
-        <div className='card-body'>
-          <h3>{prod.name}</h3>
-          <p>$ {prod.price}</p>
-          <button className='btn btn-dark' onClick={()=>{
-            this.props.themGioHang(prod)
-          }}>
-            Thêm vào giỏ <i className='fa fa-cart-plus'> </i>
+      <div className="card">
+        <img src={item.image} alt="..." />
+        <div className="card-body">
+          <h4 className="fw-bold">{item.name}</h4>
+          <p className="fs-5">${item.price}</p>
+          <button
+            type="button"
+            className="btn btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            onClick={ () => setStateModal(item)}
+          >
+            View Product Details
           </button>
         </div>
       </div>
-    )
+    );
   }
 }
